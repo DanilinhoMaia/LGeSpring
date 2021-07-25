@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" 
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+crossorigin="anonymous">
+
+<title>LG Eletronics + Danilo Maia</title>
+</head>
+<body>
+<br><br>
+<div class="container" style="text-align:center">
+	<h1>PROJETOS LGe</h1>
+	<h2>Deletar projetos</h2>
+	<hr>
+	<a align="center" th:href="@{./}" class="btn btn-primary btn-sm mb-3">Retornar</a>
+	<hr>
+</div>
+<div class="container">
+	<form method="POST"  th:action="@{/deletarProjeto}" th:object="${projeto}">
+	Id a ser deletado: <input type="text" name="id" th:field="*{id}" />
+	<input class="btn btn-primary" type="submit" value="submit">
+	</form>
+	<br><br>
+	<p style="text-align:center"><span th:text="${message}"></span></p>
+</div>
+
+</body>
+</html>

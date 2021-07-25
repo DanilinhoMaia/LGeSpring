@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" 
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+crossorigin="anonymous">
+
+<title>LG Eletronics + Danilo Maia</title>
+</head>
+<body>
+<br><br>
+<div class="container" style="text-align:center">
+	<h1>PROJETOS LGe</h1>
+	<h2>Listar projetos</h2>
+	<hr>
+	<a align="center" th:href="@{./}" class="btn btn-primary btn-sm mb-3">Retornar</a>
+	<hr>
+</div>
+<div class="container">
+	<div class="Table Accordion">
+		<table class="table table-striped">
+				<thead class="table-dark">
+					<tr>
+					<th  scope="col">ID</th>
+					<th  scope="col">Nome</th>
+					<th  scope="col">Data Início</th>
+					<th scope="col">Data Fim</th>
+					<th scope="col">Risco</th>
+					<th scope="col">Valor</th>
+					<th scope="col">Participantes</th>
+					<th>-</th>
+					</tr>
+				</thead>
+				<tbody>
+				<th:block th:each="projeto : ${projetos}">
+					<tr>
+					<td>[[${projeto.id}]]</td>
+					<td>[[${projeto.nome}]]</td>
+					<td>[[${projeto.dataInicio}]]</td>
+					<td>[[${projeto.dataFim}]]</td>
+					<td>[[${projeto.risco}]]</td>
+					<td>[[${projeto.valor}]]</td>
+					<td>[[${projeto.participantes}]]</td>
+					<td>
+						<a class="btn btn-primary" th:href="@{./deletarProjetoGET/{id}(id=${projeto.id})}">Deletar</a>
+						<a class="btn btn-primary" th:href="@{./simularProjetoGET/{valor}/{risco}/{id}(valor=${projeto.valor}, risco=${projeto.risco}, id=${projeto.id} )}">Simular</a>
+					</td>
+					</tr>
+				</th:block>
+				</tbody>
+		</table>
+	</div>
+
+	<br><br>
+	<p style="text-align:center"><span th:text="${message}"></span></p>
+</div>
+</body>
+</html>
